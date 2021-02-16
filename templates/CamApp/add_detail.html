@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+   </head>
+<body>
+{% include 'CamApp/includes.html' %}
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+        {% if msg in messages %}
+        <h3>{{msg}}</h3>
+        {% endif %}
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Add Camera Details </h2>
+                    <form method="POST">
+                    {% csrf_token %}
+                    {{form.non_field_errors}}
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Camera URL</label>
+                                    {{form.cam_url}}
+                                    {{form.cam_url.errors}}
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Camera Model</label>
+                                    {{form.cam_model}}
+                                    {{form.cam_model_errors}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Camera Created Date</label>
+                                    <div class="input-group-icon">
+                                        {{form.created_at}}
+                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                        {{form.created_at.errors}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Stream Status</label>
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                       {{form.stream_status}}
+                                       <div class="select-dropdown"></div>
+                                       {{form.stream_status.erros}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Camera Name</label>
+                                    {{form.cam_name}}
+                                    {{form.cam_name.erros}}
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Camera User </label>
+                                    {{form.cam_user}}
+                                    {{form.cam_user.errors}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label class="label">Camera Group</label>
+                             <div class="rs-select2 js-select-simple select--no-search">
+                                       {{form.cam_group}}
+                                       <div class="select-dropdown"></div>
+                                       {{form.cam_group.errors}}
+                                    </div>
+                        </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static 'CamApp/vendor/jquery/jquery.min.js' %}"></script>
+    <!-- Vendor JS-->
+    <script src="{% static 'CamApp/vendor/select2/select2.min.js' %}"></script>
+    <script src="{% static 'CamApp/vendor/datepicker/moment.min.js' %}"></script>
+    <script src="{% static 'CamApp/vendor/datepicker/daterangepicker.js' %}"></script>
+
+    <!-- Main JS-->
+    <script src="{% static 'CamApp/js/global.js' %}"></script>
+
+</body>
+
+</html>
